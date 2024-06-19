@@ -1,113 +1,210 @@
-import Image from "next/image";
-
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
-
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+const HomePage =() =>{
+  return <div>Home</div>
 }
+export default HomePage;
+/////////////////////////////////////////////////////////////////////////
+// 'use client'
+
+// import { useCallback, useEffect, useState } from "react";
+
+// interface Article {
+//   id: number;
+//   title: string;
+// }
+// //React Hooks
+// function useFetch <T>(url :string) {
+//   const [data,setData] = useState<T[]>([])
+  
+//   const fetchArticle = async () =>{
+//     const res = await fetch(url);
+//     const data = await (res.json() as Promise<T[]>);
+  
+//     setData(data);
+  
+//   };
+//   useEffect(()=>{
+//     fetchArticle()
+//     // eslint-disable-next-line react-hooks/exhaustive-deps
+//   },[])
+
+//   return data;
+
+// }
+
+// const ArticlePage =  () => {
+//   const articles = useFetch<Article>('http://localhost:5151/articles')
+//   return (
+//     <ul>
+//       {articles.map((article) => (
+//         <li key={article.id}>{article.title}</li>
+//       ))}
+//     </ul>
+//   );
+// };
+// export default ArticlePage;
+
+/////////////////////////////////////////////////////////////////////////
+
+// 'use client';
+// import { useEffect, useState } from 'react';
+
+// interface FooProps {
+//   count: number;
+//   count2: number;
+// }
+// interface FooProps {
+//   count: number;
+// }
+// const Chatroom = ({ id }: FooProps) => {
+//   useEffect(() => {
+//     // console.log('hello', count);
+//     connect(id);
+
+//     // Unmounting
+//     // Cleanup
+//     return () => close(id);
+//     // return () => console.log('Bye', count);
+//   }, [id]);
+//   return <div>Foo</div>;
+//   // // Mounted
+//   // // Updated
+//   // // Unmounting
+//   // useEffect(() => {
+//   //   console.log(123);
+//   // }, [count]);
+//   // return (
+//   //   <div>
+//   //     {count}-{count2}
+//   //   </div>
+//   // );
+// };
+
+// const HomePage = () => {
+//   // const [count, setCount] = useState(0);
+//   // const [count2, setCount2] = useState(0);
+//   const [hide, setHide] = useState(false);
+//   const [count, setCount] = useState(0);
+
+//   return (
+//     <>
+//       <button onClick={() => setCount(count + 1)}>Inc</button>
+
+//       <button onClick={() => setHide(!hide)}>Toggle</button>
+//       {!hide && <Foo count={count}></Foo>}
+
+//       {/* <button onClick={() => setCount2(count2 + 1)}>Inc2</button> */}
+//       {/* <Foo count={count} count2={count2}></Foo> */}
+//     </>
+//   );
+// };
+// export default HomePage;
+// 'use client';
+// import { useState } from 'react';
+
+// interface Todo {
+//   id: number;
+//   text: string;
+// }
+
+// interface TodoFormProps {
+//   onSubmit: (input: string) => void;
+// }
+
+// const TodoForm = ({ onSubmit }: TodoFormProps) => {
+//   const [input, setInput] = useState('');
+
+//   const handleSubmit = () => {
+//     onSubmit(input);
+//     setInput('');
+//   };
+
+//   return (
+//     <>
+//       <input
+//         type="text"
+//         onChange={(event) => setInput(event.target.value)}
+//         value={input}
+//       />
+//       <button onClick={handleSubmit}>Add</button>
+//     </>
+//   );
+// };
+// interface TodoList {
+//   todos: Todo[];
+// }
+
+// const TodoList = ({ todos }: TodoList) => {
+//   return (
+//     <ul>
+//       {todos.map((todo) => (
+//         <TodoItem key={todo.id} {...todo}></TodoItem>
+//       ))}
+//     </ul>
+//   );
+// };
+
+// const TodoItem = ({ text }: Todo) => {
+//   return <li>{text}</li>;
+// };
+
+// const TodoApp = () => {
+//   const [todos, setTodos] = useState<Todo[]>([
+//     { id: 1, text: 'Text1' },
+//     { id: 2, text: 'Text2' },
+//   ]); // [state,setState]
+
+//   const addTodos = (input: string) => {
+//     setTodos([{ id: +new Date(), text: input }, ...todos]);
+//   };
+//   return (
+//     <>
+//       <TodoForm onSubmit={addTodos}></TodoForm>
+//       <TodoList todos={todos}></TodoList>
+//     </>
+//   );
+// };
+// export default TodoApp;
+
+// import { type ReactNode } from 'react';
+
+// const Header = () => {
+//   return (
+//     <header>
+//       <button>Product</button>
+//       <button>Articles</button>
+//     </header>
+//   );
+// };
+
+// const Footer = () => {
+//   return <footer>Footer</footer>;
+// };
+
+// interface ContentProps {
+//   children: ReactNode;
+// }
+// const Content = ({ children }: ContentProps) => {
+//   return (
+//     <article className="m-4 rounded-sm border border-red-500 p-4">
+//       {children}
+//     </article>
+//   );
+// };
+// const HomePage = () => {
+//   // JSX
+//   return (
+//     <>
+//       <Header />
+
+//       <Content>
+//         <div>Hello World</div>
+//         <div>Hello World</div>
+//         <div>Hello World</div>
+//       </Content>
+
+//       <Footer />
+//     </>
+//   );
+// };
+
+// export default HomePage;
