@@ -5,8 +5,8 @@ import { add } from '@/features/articles/validators';
 import { revalidatePath } from 'next/cache';
 
 export const POST = async (req: Request) => {
-  const form = await (req.json() as Promise<CreateArticleInput>);
-  const formValidation = await add.safeParseAsync(form);
+  const form = await (req.json() as Promise<CreateArticleInput>);//Promise<CreateArticleInput> บอกโครงสร้างข้อมูลคืออะไร
+  const formValidation = await add.safeParseAsync(form);// validate data ขอมูลอยู่ตามกฏใน add รึปล่าว
 
   if (!formValidation.success) {
     return new Response(JSON.stringify(formValidation.error), {
@@ -18,7 +18,7 @@ export const POST = async (req: Request) => {
   }
 
   const article = await create(formValidation.data);
-  revalidatePath('/articles');//บอกให้มันรู้ว่าไม่Updateละนะเคลียhtml เก่าให้หน่อย
+  revalidatePath('/articles');//บอกให้มันรู้ว่าไม่Updateละนะเคลียhtml เก่าให้หน่อยสำหรับ build แบบ static
   return new Response(JSON.stringify(article), {
     status: 201,
     headers: {
