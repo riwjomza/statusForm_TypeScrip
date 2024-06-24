@@ -19,6 +19,8 @@ import {
 import { Separator } from '@/features/shadcn/components/ui/separator';
 import { Textarea } from '@/features/shadcn/components/ui/textarea';
 import { Button } from '@/features/shadcn/components/ui/button';
+import { Input } from '@/features/shadcn/components/ui/input'; // Import the Input component
+
 import { CalendarIcon } from 'lucide-react';
 import { Calendar } from '@/features/shadcn/components/ui/calendar';
 import {
@@ -59,7 +61,7 @@ const LeaveForm = (props: LeaveFormProps) => {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <h1 className="text-center text-3xl font-bold">{title}</h1>
-        <Separator className="my-4"></Separator>
+        <Separator className="my-4" />
         <FormField
           control={form.control}
           name="leaveDate"
@@ -107,7 +109,84 @@ const LeaveForm = (props: LeaveFormProps) => {
               </FormItem>
             );
           }}
-        ></FormField>
+        />
+        <FormField
+          control={form.control}
+          name="docName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Document Name</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="Enter the document name"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="paperSize"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Paper Size</FormLabel>
+              <FormControl>
+                <select className="ml-3" {...field}>
+                  <option value="A4">A4</option>
+                  <option value="A3">A3</option>
+                </select>
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="color"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Color</FormLabel>
+              <FormControl>
+                <select className="ml-3" {...field}>
+                  <option value="black-white">Black-white</option>
+                  <option value="color">Color</option>
+                </select>
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="sideOfPaper"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Side of Paper</FormLabel>
+              <FormControl>
+                <select className="ml-3" {...field}>
+                  <option value="front-only">Front Only</option>
+                  <option value="front-back">Front - Back</option>
+                </select>
+              </FormControl>
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="quantity"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Quantity</FormLabel>
+              <FormControl>
+                <Input
+                  type="number"
+                  placeholder="Enter the quantity"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="reason"
@@ -119,11 +198,11 @@ const LeaveForm = (props: LeaveFormProps) => {
                   placeholder="Tell us about your leave"
                   className="resize-none"
                   {...field}
-                ></Textarea>
+                />
               </FormControl>
             </FormItem>
           )}
-        ></FormField>
+        />
         <Button
           type="submit"
           className="my-4"
