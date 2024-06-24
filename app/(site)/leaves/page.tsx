@@ -1,12 +1,14 @@
-'use client'
-import LeaveList from "@/features/leaves/components/LeaveList";
-import { useGetLeaves } from "@/features/leaves/hooks/api";
+'use client';
 
-const LeavePage =  () =>{
-const {loading,leaves} =  useGetLeaves();
+import LeaveList from '@/features/leaves/components/LeaveList';
+import { useGetLeaves } from '@/features/leaves/hooks/api';
 
-  if(loading) return <div>Loading...</div>;
-  return <LeaveList leaves = {leaves}></LeaveList>;
-    
-}
-export default LeavePage;
+const LeavesPage = () => {
+  const { data, status } = useGetLeaves();
+
+  if (status === 'pending') return <div>Loading...</div>;
+  if (!data) return <div>No leaves found</div>;
+  return <LeaveList leaves={data}></LeaveList>;
+};
+
+export default LeavesPage;

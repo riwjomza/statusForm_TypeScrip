@@ -5,7 +5,6 @@ export type ArticleItem = Awaited<ReturnType<typeof findAll>>[number];
 export type ArticleDetails = NonNullable<Awaited<ReturnType<typeof findById>>>;
 
 
-
 // // import { type update, type add } from '@/features/articles/validators';
 // import { type z } from 'zod';
 

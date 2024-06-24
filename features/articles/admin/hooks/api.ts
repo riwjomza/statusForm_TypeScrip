@@ -79,8 +79,3 @@ export const useEditArticle = (id: ArticleDetails['id']) => {
     },
   };
 };
-
-
-// const { mutateAsync} = useCreateArticle()
- 
-// mutateAsync(form) 
