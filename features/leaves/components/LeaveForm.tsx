@@ -1,5 +1,4 @@
 'use client';
-
 import {
   type Leave,
   type AddLeaveInput,
@@ -62,53 +61,22 @@ const LeaveForm = (props: LeaveFormProps) => {
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <h1 className="text-center text-3xl font-bold">{title}</h1>
         <Separator className="my-4" />
+
         <FormField
           control={form.control}
-          name="leaveDate"
-          render={({ field }) => {
-            const leaveDate = new Date(field.value);
-
-            return (
-              <FormItem className="flex flex-col">
-                <FormLabel>Submit Date</FormLabel>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <FormControl>
-                      <Button
-                        variant={'outline'}
-                        className={cn(
-                          'w-[240px] pl-3 text-left font-normal',
-                          !field.value && 'text-muted-foreground',
-                        )}
-                      >
-                        {field.value ? (
-                          format(leaveDate, 'PPP')
-                        ) : (
-                          <span>Pick a date</span>
-                        )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                      </Button>
-                    </FormControl>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={leaveDate}
-                      onSelect={(date) => {
-                        if (!date) return;
-
-                        form.setValue('leaveDate', date.toISOString(), {
-                          shouldValidate: true,
-                        });
-                      }}
-                      disabled={(date) => date <= new Date()}
-                      initialFocus
-                    />
-                  </PopoverContent>
-                </Popover>
-              </FormItem>
-            );
-          }}
+          name="enNo"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>EN</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="Enter the En here"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
         />
         <FormField
           control={form.control}
@@ -134,6 +102,7 @@ const LeaveForm = (props: LeaveFormProps) => {
               <FormLabel>Paper Size</FormLabel>
               <FormControl>
                 <select className="ml-3" {...field}>
+                  <option value="">Select paper size</option>
                   <option value="A4">A4</option>
                   <option value="A3">A3</option>
                 </select>
@@ -149,6 +118,7 @@ const LeaveForm = (props: LeaveFormProps) => {
               <FormLabel>Color</FormLabel>
               <FormControl>
                 <select className="ml-3" {...field}>
+                  <option value="">Select color</option>
                   <option value="black-white">Black-white</option>
                   <option value="color">Color</option>
                 </select>
@@ -164,6 +134,7 @@ const LeaveForm = (props: LeaveFormProps) => {
               <FormLabel>Side of Paper</FormLabel>
               <FormControl>
                 <select className="ml-3" {...field}>
+                  <option value="">Select side of paper</option>
                   <option value="front-only">Front Only</option>
                   <option value="front-back">Front - Back</option>
                 </select>

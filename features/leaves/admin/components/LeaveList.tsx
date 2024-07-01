@@ -4,13 +4,11 @@ import LeaveItem from '@/features/leaves/components/LeaveItem';
 import { type Leave } from '@/features/leaves/types';
 import { Button } from '@/features/shadcn/components/ui/button';
 import { Separator } from '@/features/shadcn/components/ui/separator';
-import { Session } from 'inspector';
 import { Plus } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 interface LeaveListProps {
   leaves: Leave[];
-
 }
 
 const LeaveList = ({ leaves }: LeaveListProps) => {
