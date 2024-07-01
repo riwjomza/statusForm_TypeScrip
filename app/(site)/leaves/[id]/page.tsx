@@ -14,6 +14,7 @@ import {
 } from '@/features/shadcn/components/ui/card';
 import { Badge } from '@/features/shadcn/components/ui/badge';
 import Swal from "sweetalert2";
+import { Undo2 } from 'lucide-react';
 
 interface LeaveItem {
   desc: string;
@@ -26,6 +27,8 @@ interface LeaveItem {
   status: string;
   doc_id: string; // Assuming each document has a unique ID
   date_req:string;
+  fname: string;
+  lname: string;
 }
 
 const UserId = () => {
@@ -114,6 +117,7 @@ const UserId = () => {
       }
     }
   };
+  
 
   const statusColor = (status: LeaveItem['status']) => {
     switch (status) {
@@ -135,7 +139,7 @@ const UserId = () => {
 
   return (
     <section>
-      <h1 className="my-4 text-center text-4xl font-bold">All Documents</h1>
+    <h1 className="my-4 text-center text-4xl font-bold">All Documents</h1>
       <Separator className="my-4"></Separator>
 
       <div className="mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -163,6 +167,16 @@ const UserId = () => {
                 </div>               
                 </CardHeader>
               <Separator className="my-1"></Separator>
+              <CardContent className="font-bold ">
+                <div className="flex">
+                  <div>
+                  Requestor:
+                  </div>
+                  <div className='text-blue-400 ml-2'>
+                  {item.fname}  {item.lname}   
+                   </div>
+                </div>               
+                </CardContent>
               <CardContent className="font-bold">Date Request: {item.date_req}</CardContent>
               <CardContent className="font-bold">Size: {item.doc_size}</CardContent>
               <CardContent className="font-bold">Site: {item.doc_site}</CardContent>

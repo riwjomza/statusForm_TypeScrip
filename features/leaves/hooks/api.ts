@@ -57,6 +57,8 @@ export const useCreateLeave = () => {
         status: 'PENDING', // or any default status you want to set
         desc: input.reason,
         en_req: input.enNo,
+        fname: input.fname,
+        lname: input.lname
         // you can generate an ID if needed, or handle it as per your requirements
       };
 

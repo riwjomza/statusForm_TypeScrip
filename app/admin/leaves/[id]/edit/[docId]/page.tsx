@@ -10,6 +10,7 @@ import {
   CardHeader,
 } from '@/features/shadcn/components/ui/card';
 import Swal from 'sweetalert2';
+import { Undo2 } from 'lucide-react';
 
 interface LeaveItem {
   desc: string;
@@ -22,6 +23,8 @@ interface LeaveItem {
   status: string;
   doc_id: string;
   date_req: string;
+  fname:string;
+  lname:string;
 }
 
 const EditLeave = () => {
@@ -33,6 +36,9 @@ const EditLeave = () => {
 
   const [leaveItem, setLeaveItem] = useState<LeaveItem | null>(null);
 
+  const onBack = () =>{
+    router.back(); 
+  }
   useEffect(() => {
     const fetchLeaveItem = async () => {
       if (doc_id) {
@@ -98,6 +104,7 @@ const EditLeave = () => {
       }
     }
   };
+  
 
   const handleReject = async () => {
     const result = await Swal.fire({
@@ -132,7 +139,7 @@ const EditLeave = () => {
           text: 'The document has been rejected.',
           icon: 'success'
         }).then(() => {
-          router.back(); ;
+          router.back(); 
         });
 
       } catch (error) {
@@ -145,30 +152,53 @@ const EditLeave = () => {
     }
   };
 
+ 
   if (!leaveItem) return <div>Loading...</div>; // Show loading while fetching data
 
   return (
     <section>
+      <Undo2 size={60} className="absolute  pb-6"  onClick={onBack} />
       <h1 className="my-4 text-center text-4xl font-bold">Confirm Document</h1>
       <Separator className="my-4"></Separator>
       <div className="mx-auto grid grid-cols-1">
         <Card className="flex flex-col">
-          <CardHeader className="font-bold flex">
+     
+              <CardHeader className="font-bold flex">
             <div className='flex'>
               <div >
             Docname ID: 
               </div>
-            <div className='ml-20 text-red-700 font-bold '>
+            <div className='ml-20 text-blue-500 font-bold '>
                  {leaveItem.doc_id}
                </div>
               </div>  
-              </CardHeader>   
+              </CardHeader>  
               <CardContent className="font-bold flex">
             <div className='flex'>
               <div >
-               Name:
+            Date request (MM/DD/YY): 
               </div>
-            <div className='ml-20 text-red-700 font-bold '>
+            <div className='ml-10 text-blue-500 font-bold '>
+                 {leaveItem.date_req}
+               </div>
+              </div>  
+              </CardContent>
+              <CardContent className="font-bold flex">
+            <div className='flex'>
+              <div >
+              Reqeustor :
+              </div>
+            <div className='ml-10 text-blue-500 font-bold '>
+                 {leaveItem.fname} {leaveItem.lname} 
+               </div>
+              </div>  
+              </CardContent> 
+              <CardContent className="font-bold flex">
+            <div className='flex'>
+              <div >
+               Document Name:
+              </div>
+            <div className='ml-10 text-blue-500  font-bold '>
                  {leaveItem.doc_name}
                </div>
               </div>  
@@ -178,7 +208,7 @@ const EditLeave = () => {
               <div >
               Size:
               </div>
-            <div className='ml-20 text-red-700 font-bold '>
+            <div className='ml-20 text-blue-500  font-bold '>
                  {leaveItem.doc_size}
                </div>
               </div>  
@@ -188,7 +218,7 @@ const EditLeave = () => {
               <div >
               Site:
               </div>
-            <div className='ml-20 text-red-700 font-bold '>
+            <div className='ml-20 text-blue-500  font-bold '>
                  {leaveItem.doc_site}
                </div>
               </div>  
@@ -198,7 +228,7 @@ const EditLeave = () => {
               <div >
               Quantity:
               </div>
-            <div className='ml-20 text-red-700 font-bold '>
+            <div className='ml-20 text-blue-500 font-bold '>
                  {leaveItem.doc_qty}
                </div>
               </div>  
@@ -208,7 +238,7 @@ const EditLeave = () => {
               <div >
               Color:
               </div>
-            <div className='ml-20 text-red-700 font-bold '>
+            <div className='ml-20 text-blue-500  font-bold '>
                  {leaveItem.doc_color}
                </div>
               </div>  
@@ -218,7 +248,7 @@ const EditLeave = () => {
               <div >
               Description:
               </div>
-            <div className='ml-10 text-red-700 font-bold '>
+            <div className='ml-10 text-blue-500  font-bold '>
                  {leaveItem.desc}
                </div>
               </div>  

@@ -12,6 +12,8 @@ import {
 import { Badge } from '@/features/shadcn/components/ui/badge';
 import Link from 'next/link';
 import { Edit } from 'lucide-react';
+import { useRouter } from "next/navigation";
+import { Undo2 } from 'lucide-react';
 
 interface LeaveItem {
   req: string;
@@ -21,11 +23,21 @@ interface LeaveItem {
   mo_date: string;
   doc_id: string;
   en_req: string;
+  fname:string;
+  lname:string;
+  doc_name:string;
+  doc_color:string;
+  doc_site:string;
+  doc_size:string;
+  doc_desc:string;
+  doc_qty:string;
+
 
 }
 
 const AddminId = () => {
   const pathname = usePathname();
+  const router = useRouter();
   const [userId, setUserId] = useState<string | null>(null);
   const [data, setData] = useState<LeaveItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -60,6 +72,9 @@ const AddminId = () => {
     fetchData();
   }, [userId]); // Dependency array with only userId
 
+  const onBack = () =>{
+    router.back(); 
+  }
   const statusColor = (req: LeaveItem['req']) => {
     switch (req) {
       case 'PENDING':
@@ -80,21 +95,65 @@ const AddminId = () => {
 
   return (
     <section>
+            <Undo2 size={60} className="absolute  pb-6"  onClick={onBack}/>
+
       <h1 className="my-4 text-center text-4xl font-bold">All Documents</h1>
       <Separator className="my-4"></Separator>
 
       <div className="mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
         {data.map((item: LeaveItem, index: number) => (
           <div key={index}>
-            <Card className="flex flex-col">
-              <CardHeader className="font-bold text-xl">Status: {item.req}</CardHeader>
-              <CardHeader className="font-bold">EN Supervisor: {item.add_apprv}</CardHeader>
-              <Separator className="my-1"></Separator>
+            <Card className="flex flex-col">   <CardHeader className="font-bold flex text-xl">
+            <div className='flex'>
+              <div >
+             Status : 
+              </div>
+            <div className='ml-10 text-green-700 font-bold '>
+                 {item.req}
+               </div>
+              </div>  
+              </CardHeader>  
+              <CardHeader className="font-bold flex text-xl">
+            <div className='flex'>
+              <div >
+            Docname ID: 
+              </div>
+            <div className='ml-10 text-green-700 font-bold '>
+                 {item.doc_id}
+               </div>
+              </div>  
+              </CardHeader>  
+              <CardHeader className="font-bold text-xl  ">
+                <div className="flex ">
+                  <div>
+                  EN Supervisor: 
+                  </div>
+                  <div className='text-green-700 ml-2'>
+                  {item.add_apprv}
+                   </div>
+                </div>    
+                </CardHeader>
+                <Separator className="my-1"></Separator>
+
+                <CardContent className="font-bold ">
+                <div className="flex ">
+                  <div>
+                  Requestor:
+                  </div>
+                  <div className='text-green-700 ml-2'>
+                  {item.fname}  {item.lname}   
+                   </div>
+                </div>               
+                </CardContent>
+                <CardContent className="font-bold">EN Requestor: {item.en_req}</CardContent>             
               <CardContent className="font-bold">Date APPROVE: {item.add_apprv_date}</CardContent>
               <CardContent className="font-bold">Request Date: {item.req_date}</CardContent>
-              <CardContent className="font-bold">Reject Date: {item.mo_date}</CardContent>
-              <CardContent className="font-bold">Document ID: {item.doc_id}</CardContent>
-              <CardContent className="font-bold">EN Requestor: {item.en_req}</CardContent>
+              <CardContent className="font-bold">Document Name: {item.doc_name}</CardContent>
+              <CardContent className="font-bold">Color: {item.doc_color}</CardContent>
+              <CardContent className="font-bold">Site: {item.doc_site}</CardContent>
+              <CardContent className="font-bold">Size: {item.doc_size}</CardContent>
+              <CardContent className="font-bold">Description: {item.doc_desc}</CardContent>
+              <CardContent className="font-bold">QTY: {item.doc_qty}</CardContent>
               <Separator></Separator>
               <CardFooter className="flex items-center justify-between px-6 py-4">
                 <Badge className={statusColor(item.req)}>{item.req}</Badge>

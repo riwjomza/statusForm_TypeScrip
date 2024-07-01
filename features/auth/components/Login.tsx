@@ -29,13 +29,10 @@ const Login = () => {
       const result = await response.json();
 
       if (result.Status === 'Pass') {
-        // Handle successful login
         console.log('Login successful:', result);
-        if (result.FPosuse === 'PROGRAMMERs') {
-          router.push(`/admin/leaves/YES,${result.EN_No}`);
-        } else {
-          router.push(`/leaves/NO,${result.EN_No}`);
-        }
+        const userPath = result.FPosuse === 'PROGRAMMER' ? 'admin/leaves/YES' : 'leaves/NO';
+        router.push(`/${userPath},${result.EN_No}`);
+      
       } else {
         throw new Error(result.Message);
       

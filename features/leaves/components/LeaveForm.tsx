@@ -1,6 +1,5 @@
 'use client';
 import {
-  type Leave,
   type AddLeaveInput,
   type UpdateLeaveInput,
 } from '@/features/leaves/types';
@@ -29,19 +28,17 @@ import {
 } from '@/features/shadcn/components/ui/popover';
 import { cn } from '@/features/shadcn/utils';
 import { format } from 'date-fns';
+import { useRouter } from "next/navigation";
+import { Undo2 } from 'lucide-react';
 
 export type LeaveFormProps =
   | {
       kind: 'create';
       onSubmit: SubmitHandler<AddLeaveInput>;
     }
-  | {
-      kind: 'edit';
-      leave: Leave;
-      onSubmit: SubmitHandler<UpdateLeaveInput>;
-    };
-
+   
 const LeaveForm = (props: LeaveFormProps) => {
+  const router = useRouter();
   const { kind, onSubmit } = props;
   const title = `${capitalize(kind)} Data`;
   const form = useForm<
@@ -53,16 +50,53 @@ const LeaveForm = (props: LeaveFormProps) => {
     resolver: zodResolver(
       kind === 'create' ? validators.add : validators.update,
     ),
-    defaultValues: kind === 'edit' ? props.leave : undefined,
   });
-
+  const onBack = () =>{
+    router.back(); 
+  }
   return (
     <Form {...form}>
+            <Undo2 size={60} className="absolute pb-6"  onClick={onBack}/>
+
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <h1 className="text-center text-3xl font-bold">{title}</h1>
         <Separator className="my-4" />
 
         <FormField
+          control={form.control}
+          name="fname"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>First name</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="Enter the First name here"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+<FormField
+          control={form.control}
+          name="lname"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Last name</FormLabel>
+              <FormControl>
+                <Input
+                  type="text"
+                  placeholder="Ente Last name here"
+                  {...field}
+                />
+              </FormControl>
+            </FormItem>
+          )}
+        />
+
+  <FormField
           control={form.control}
           name="enNo"
           render={({ field }) => (
@@ -71,7 +105,7 @@ const LeaveForm = (props: LeaveFormProps) => {
               <FormControl>
                 <Input
                   type="text"
-                  placeholder="Enter the En here"
+                  placeholder="Enter the First name here"
                   {...field}
                 />
               </FormControl>

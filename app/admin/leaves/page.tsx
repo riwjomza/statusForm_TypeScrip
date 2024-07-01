@@ -28,6 +28,8 @@ interface LeaveItem {
   en_req: string;
   status: string;
   doc_id:string;
+  fname: string;
+  lname: string;
 }
 
 

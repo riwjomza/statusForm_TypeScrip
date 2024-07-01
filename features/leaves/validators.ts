@@ -13,6 +13,9 @@ export const add = z.object({
   quantity: z.string({ required_error: 'A quantity is required' }).min(1),
   reason: z.string({ required_error: 'A reason is required' }).min(1),
   enNo: z.string({ required_error: 'A EN is required' }).min(1),
+  fname: z.string({ required_error: 'A First name is required' }).min(1),
+  lname: z.string({ required_error: 'A Last name is required' }).min(1),
+  
 });
 
 export const update = add.partial();
