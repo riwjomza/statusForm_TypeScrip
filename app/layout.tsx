@@ -1,10 +1,9 @@
 import './globals.css';
-
 import { Inter as FontSans } from 'next/font/google';
-
 import { cn } from '@/features/shadcn/utils';
 import ClientProviders from '@/features/shared/components/clientProviders';
 import Toast from '@/features/ui/components/Toast';
+import { UserProvider } from '@/app/context/UserContext'; // Import the UserProvider
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -30,11 +29,12 @@ export default function RootLayout({
           fontSans.variable,
         )}
       >
-        <ClientProviders>
-
-        {children}
-        <Toast></Toast>
-        </ClientProviders>
+        <UserProvider> {/* Wrap with UserProvider */}
+          <ClientProviders>
+            {children}
+            <Toast />
+          </ClientProviders>
+        </UserProvider>
       </body>
     </html>
   );

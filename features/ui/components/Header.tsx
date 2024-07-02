@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 import { useState, useEffect } from 'react';
+import { useUser } from '@/app/context/UserContext';
 
 interface NavLinkProps {
   path: string;
@@ -25,7 +26,8 @@ const NavLink = ({ path, children }: NavLinkProps) => {
 
 const Header = () => {
   const pathname = usePathname();
-  
+  const { user } = useUser(); // Get user from context
+
   if (pathname === '/auth/sign-in') {
     return null;
   }
@@ -67,7 +69,16 @@ const Header = () => {
 
       <div className="!ml-auto h-[40px] w-[1px] bg-gray-300"></div>
 
-      <AuthMenu />
+{user && (
+  <span className="mr-4 text-gray-700">
+    {user.EN_No} 
+    <div className="!ml-auto w-[1px] bg-gray-300"></div>
+
+    {user.E_FName} {user.E_Name}
+  </span>
+)}
+<AuthMenu />
+
     </nav>
   );
 };

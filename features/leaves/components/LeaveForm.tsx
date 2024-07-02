@@ -17,8 +17,7 @@ import {
 import { Separator } from '@/features/shadcn/components/ui/separator';
 import { Textarea } from '@/features/shadcn/components/ui/textarea';
 import { Button } from '@/features/shadcn/components/ui/button';
-import { Input } from '@/features/shadcn/components/ui/input'; // Import the Input component
-
+import { Input } from '@/features/shadcn/components/ui/input';
 import { CalendarIcon } from 'lucide-react';
 import { Calendar } from '@/features/shadcn/components/ui/calendar';
 import {
@@ -30,6 +29,7 @@ import { cn } from '@/features/shadcn/utils';
 import { format } from 'date-fns';
 import { useRouter } from "next/navigation";
 import { Undo2 } from 'lucide-react';
+import { useUser } from '@/app/context/UserContext'; // Import the useUser hook
 
 export type LeaveFormProps =
   | {
@@ -40,7 +40,9 @@ export type LeaveFormProps =
 const LeaveForm = (props: LeaveFormProps) => {
   const router = useRouter();
   const { kind, onSubmit } = props;
+  const { user } = useUser(); // Get user from context
   const title = `${capitalize(kind)} Data`;
+
   const form = useForm<
     typeof onSubmit extends SubmitHandler<AddLeaveInput>
       ? AddLeaveInput
@@ -50,13 +52,20 @@ const LeaveForm = (props: LeaveFormProps) => {
     resolver: zodResolver(
       kind === 'create' ? validators.add : validators.update,
     ),
+    defaultValues: {
+      fname: user?.E_FName || '',
+      lname: user?.E_Name || '',
+      enNo: user?.EN_No || '',
+    },
   });
-  const onBack = () =>{
+
+  const onBack = () => {
     router.back(); 
-  }
+  };
+
   return (
     <Form {...form}>
-            <Undo2 size={60} className="absolute pb-6"  onClick={onBack}/>
+      <Undo2 size={60} className="absolute pb-6" onClick={onBack} />
 
       <form onSubmit={form.handleSubmit(onSubmit)}>
         <h1 className="text-center text-3xl font-bold">{title}</h1>
@@ -79,7 +88,7 @@ const LeaveForm = (props: LeaveFormProps) => {
           )}
         />
 
-<FormField
+        <FormField
           control={form.control}
           name="lname"
           render={({ field }) => (
@@ -88,7 +97,7 @@ const LeaveForm = (props: LeaveFormProps) => {
               <FormControl>
                 <Input
                   type="text"
-                  placeholder="Ente Last name here"
+                  placeholder="Enter Last name here"
                   {...field}
                 />
               </FormControl>
@@ -96,7 +105,7 @@ const LeaveForm = (props: LeaveFormProps) => {
           )}
         />
 
-  <FormField
+        <FormField
           control={form.control}
           name="enNo"
           render={({ field }) => (
@@ -105,13 +114,14 @@ const LeaveForm = (props: LeaveFormProps) => {
               <FormControl>
                 <Input
                   type="text"
-                  placeholder="Enter the First name here"
+                  placeholder="Enter the EN number here"
                   {...field}
                 />
               </FormControl>
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="docName"
@@ -128,6 +138,7 @@ const LeaveForm = (props: LeaveFormProps) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="paperSize"
@@ -144,6 +155,7 @@ const LeaveForm = (props: LeaveFormProps) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="color"
@@ -160,6 +172,7 @@ const LeaveForm = (props: LeaveFormProps) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="sideOfPaper"
@@ -176,6 +189,7 @@ const LeaveForm = (props: LeaveFormProps) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="quantity"
@@ -192,6 +206,7 @@ const LeaveForm = (props: LeaveFormProps) => {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="reason"
@@ -208,6 +223,7 @@ const LeaveForm = (props: LeaveFormProps) => {
             </FormItem>
           )}
         />
+
         <Button
           type="submit"
           className="my-4"

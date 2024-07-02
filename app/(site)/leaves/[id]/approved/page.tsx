@@ -97,7 +97,7 @@ const AddminId = () => {
     <section>
             <Undo2 size={60} className="absolute  pb-6"  onClick={onBack}/>
 
-      <h1 className="my-4 text-center text-4xl font-bold">All Documents</h1>
+      <h1 className="my-4 text-center text-4xl font-bold">All Approved Documents</h1>
       <Separator className="my-4"></Separator>
 
       <div className="mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -138,7 +138,18 @@ const AddminId = () => {
                 <CardContent className="font-bold ">
                 <div className="flex ">
                   <div>
-                  Requestor:
+                  Requestor EN:
+                  </div>
+                  <div className='text-green-700 ml-2'>
+                  {item.en_req}   
+                   </div>
+                </div>               
+                </CardContent>
+
+                <CardContent className="font-bold ">
+                <div className="flex ">
+                  <div>
+                  Requestor Name:
                   </div>
                   <div className='text-green-700 ml-2'>
                   {item.fname}  {item.lname}   

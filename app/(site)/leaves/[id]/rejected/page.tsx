@@ -93,7 +93,7 @@ const AddminRej = () => {
   return (
     <section>
                <Undo2 size={60} className="absolute  pb-6"  onClick={onBack}/>
-      <h1 className="my-4 text-center text-4xl font-bold">All Documents</h1>
+      <h1 className="my-4 text-center text-4xl font-bold">All Rejected Documents</h1>
       <Separator className="my-4"></Separator>
 
       <div className="mx-auto grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -129,11 +129,22 @@ const AddminRej = () => {
                   {item.add_apprv}
                    </div>
                 </div>    
-                </CardHeader>              <Separator className="my-1"></Separator>
+                </CardHeader>         
+                     <Separator className="my-1"></Separator>
+                <CardContent className="font-bold ">
+                <div className="flex">
+                  <div>
+                  Requestor EN:
+                  </div>
+                  <div className='text-red-600 ml-2'>
+                  {item.en_req} 
+                   </div>
+                </div>               
+                </CardContent>
               <CardContent className="font-bold ">
                 <div className="flex">
                   <div>
-                  Requestor:
+                  Requestor Name:
                   </div>
                   <div className='text-red-600 ml-2'>
                   {item.fname}  {item.lname}   
@@ -142,7 +153,6 @@ const AddminRej = () => {
                 </CardContent>
               <CardContent className="font-bold">Request Date: {item.req_date}</CardContent>
               <CardContent className="font-bold">Reject Date: {item.mo_date}</CardContent>
-              <CardContent className="font-bold">EN Requestor: {item.en_req}</CardContent>
               <CardContent className="font-bold">EN Document Name: {item.doc_name}</CardContent>
               <CardContent className="font-bold">Color: {item.doc_color}</CardContent>
               <CardContent className="font-bold">Site: {item.doc_site}</CardContent>

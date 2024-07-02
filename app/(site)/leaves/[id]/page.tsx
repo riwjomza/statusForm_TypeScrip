@@ -159,7 +159,7 @@ const UserId = () => {
                 <CardHeader className="font-bold text-xl">
                 <div className="flex">
                   <div>
-                  Name : 
+                 Document Name : 
                   </div>
                   <div className='text-blue-400 ml-2'>
                   {item.doc_name}      
@@ -167,10 +167,20 @@ const UserId = () => {
                 </div>               
                 </CardHeader>
               <Separator className="my-1"></Separator>
+                <CardContent className="font-bold ">
+                <div className="flex">
+                  <div>
+                   Requestor EN:
+                  </div>
+                  <div className='text-blue-400 ml-2'>
+                  {item.en_req} 
+                   </div>
+                </div>               
+                </CardContent>
               <CardContent className="font-bold ">
                 <div className="flex">
                   <div>
-                  Requestor:
+                  Requestor Name:
                   </div>
                   <div className='text-blue-400 ml-2'>
                   {item.fname}  {item.lname}   

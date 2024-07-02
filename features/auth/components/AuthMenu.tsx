@@ -19,6 +19,8 @@ const AuthMenu = () => {
   const router = useRouter();
 
   const handleLogout = () => {
+    localStorage.removeItem('user');
+
     // Perform any logout-related actions here if needed
     router.push('/auth/sign-in');
   };
@@ -30,9 +32,9 @@ const AuthMenu = () => {
       </DropdownMenuTrigger>
       
       <DropdownMenuContent>
-        <DropdownMenuLabel>My Account</DropdownMenuLabel>
+        <DropdownMenuLabel>Documents</DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>Profile</DropdownMenuItem>
+        {/* <DropdownMenuItem>Profile</DropdownMenuItem> */}
         <DropdownMenuItem onClick={handleLogout}>Logout</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

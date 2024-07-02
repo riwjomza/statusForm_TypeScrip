@@ -7,7 +7,7 @@ const nextConfig = {
     return [
       {
         source: '/',
-        destination: '/leaves',
+        destination: '/auth/sign-in',
         permanent: true,
       },
       {
@@ -29,6 +29,7 @@ const nextConfig = {
       },
     ],
   },
+  // useFileSystemPublicRoutes: false,
 };
 
 export default nextConfig;
